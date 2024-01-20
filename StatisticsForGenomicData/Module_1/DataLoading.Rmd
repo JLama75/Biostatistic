@@ -1,0 +1,57 @@
+---
+title: "StatisticsForGenomicData"
+author: "JyotiLama"
+date: "2024-01-20"
+output:
+  pdf_document: default
+  html_document: default
+---
+## Load data
+
+### connetion from the *url* document \n 
+
+### eset/expression set data R datas
+```{r}
+con=url("http://bowtie-bio.sourceforge.net/recount/ExpressionSets/bodymap_eset.RData")
+load(file=con)
+close(con)
+```
+
+## Expression Set
+
+```{r}
+bm = bodymap.eset
+bm
+```
+
+## Expression Data
+```{r}
+exp_data = exprs(bm)
+dim(exp_data)
+head(exp_data, n=5)
+```
+
+## Pheno Data
+```{r}
+pheno_data = pData(bm)
+dim(pheno_data)
+head(pheno_data)
+```
+
+##Feature Data
+
+```{r}
+feature_data = fData(bm)
+dim(feature_data)
+head(feature_data)
+
+dim(fData(bodymap.eset))
+fData(bodymap.eset)[1:10,1]
+```
+
+## Session Info
+
+```{r}
+devtools::session_info()
+```
+
